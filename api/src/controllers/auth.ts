@@ -207,7 +207,7 @@ router.post(
 router.get(
 	'/oauth',
 	asyncHandler(async (req, res, next) => {
-		const providers = toArray(env.OAUTH_PROVIDERS);
+		const providers = toArray(env.OAUTH_PROVIDERS).map((provider) => provider.trim());
 		res.locals.payload = { data: env.OAUTH_PROVIDERS ? providers : null };
 		return next();
 	}),
